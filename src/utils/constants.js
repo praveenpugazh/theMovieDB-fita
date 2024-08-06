@@ -4,3 +4,4 @@ export const AUTH_TOKEN =
 export const MOVIE_LIST_END_POINT =
   'https://api.themoviedb.org/3/movie/top_rated'
 
+export const TV_LIST_END_POINT = 'https://api.themoviedb.org/3/discover/tv'

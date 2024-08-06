@@ -1,13 +1,22 @@
-import Header from './components/Header'
-import MovieList from './components/MovieList'
-import Search from './components/Search'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Home from './pages/Home'
+import TvPage from './pages/TvPage'
 
 export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Home />
+    },
+    {
+      path: '/tv',
+      element: <TvPage />
+    }
+  ])
+
   return (
     <>
-      <Header />
-      <Search />
-      <MovieList />
+      <RouterProvider router={router}></RouterProvider>
     </>
   )
 }
