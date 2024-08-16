@@ -1,7 +1,16 @@
+import { useContext, useEffect } from 'react'
 import SingleCard from './SingleCard'
 import { PropTypes } from 'prop-types'
+import { MovieContext } from '../context/MovieContext'
 
-const CardList = ({ isLoading, cardData }) => {
+const CardList = () => {
+  const { state, getMovieListData } = useContext(MovieContext)
+  const { isLoading, cardData } = state
+
+  useEffect(() => {
+    getMovieListData()
+  }, [])
+
   if (isLoading) {
     return <h1>Loading......</h1>
   }
