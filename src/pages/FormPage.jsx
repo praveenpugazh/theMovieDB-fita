@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import ClassComponent from '../components/ClassComponent'
 
 const FormPage = () => {
@@ -8,6 +8,9 @@ const FormPage = () => {
     age: '',
     email: ''
   })
+  console.log('rendered')
+  const firstNameRef = useRef('')
+  console.log(firstNameRef)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -22,11 +25,9 @@ const FormPage = () => {
         <input
           type='text'
           name='firstName'
-          value={formData.firstName}
+          ref={firstNameRef}
+          onChange={(e) => (firstNameRef.current = e.target.value)}
           required
-          onChange={(e) => {
-            setFormData({ ...formData, firstName: e.target.value })
-          }}
         />
         <br />
         <label htmlFor=''>Last Name</label>

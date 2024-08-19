@@ -5,19 +5,19 @@ import { MovieContext } from '../context/MovieContext'
 
 const CardList = () => {
   const { state, getMovieListData } = useContext(MovieContext)
-  const { isLoading, cardData } = state
+  // const { isLoading, cardData } = state
 
   useEffect(() => {
     getMovieListData()
   }, [])
 
-  if (isLoading) {
+  if (state.isLoading) {
     return <h1>Loading......</h1>
   }
 
   return (
     <div className='flex items-center justify-between flex-wrap p-10'>
-      {cardData.results.map((data) => {
+      {state.cardData.results.map((data) => {
         return <SingleCard key={data.id} data={data} />
       })}
     </div>

@@ -4,7 +4,6 @@ import axios from 'axios'
 
 export const MovieContext = createContext()
 
-// eslint-disable-next-line react/prop-types
 export const MovieContextProvider = ({ children }) => {
   //   const [cardData, setCardData] = useState([])
   //   const [isLoading, setIsLoading] = useState(true)

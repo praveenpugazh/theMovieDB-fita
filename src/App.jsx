@@ -1,22 +1,25 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Home from './pages/Home'
-import TvPage from './pages/TvPage'
+
 import FormPage from './pages/FormPage'
 import { MovieContextProvider } from './context/MovieContext'
+import { lazy, Suspense } from 'react'
+
+const TvPageLazy = lazy(() => import('./pages/TvPage'))
 
 export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: (
-        <MovieContextProvider>
-          <Home />
-        </MovieContextProvider>
-      )
+      element: <Home />
     },
     {
       path: '/tv',
-      element: <TvPage />
+      element: (
+        <Suspense fallback={<h1>loading....</h1>}>
+          <TvPageLazy />
+        </Suspense>
+      )
     },
     {
       path: '/form',
@@ -26,7 +29,9 @@ export default function App() {
 
   return (
     <>
-      <RouterProvider router={router}></RouterProvider>
+      <MovieContextProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </MovieContextProvider>
     </>
   )
 }

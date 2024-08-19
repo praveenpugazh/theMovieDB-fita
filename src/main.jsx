@@ -9,3 +9,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 )
 
+// useMemo -> // memoization
+// useCallback
+// HOC
+
+// redux -> 1
+
+// typescript
