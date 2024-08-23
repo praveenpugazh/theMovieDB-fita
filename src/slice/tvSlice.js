@@ -11,9 +11,7 @@ const tvSlice = createSlice({
       state.cardData = [...action.payload]
     },
     setLoadingFalse: (state) => {
-      console.log(state.isLoading)
       state.isLoading = false
-      console.log(state.isLoading)
     }
   }
 })

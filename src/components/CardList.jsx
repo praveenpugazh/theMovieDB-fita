@@ -1,10 +1,11 @@
 import { useContext, useEffect } from 'react'
-import SingleCard from './SingleCard'
+import SingleCard, { withSingleCard } from './SingleCard'
 import { PropTypes } from 'prop-types'
 import { MovieContext } from '../context/MovieContext'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCardData, setLoadingFalse } from '../slice/tvSlice'
 import axios from 'axios'
+import useCountryData from '../utils/useCountryData'
 
 // eslint-disable-next-line react/prop-types
 const CardList = ({ movie }) => {
@@ -16,16 +17,8 @@ const CardList = ({ movie }) => {
 
   const dispatch = useDispatch()
 
-  const getCountriesData = async () => {
-    const { data } = await axios.get(
-      'https://restcountries.com/v3.1/independent?status=true'
-    )
-
-    dispatch(setCardData(data))
-  }
-  useEffect(() => {
-    getCountriesData()
-  }, [])
+  const data = useCountryData
+  console.log(data)
 
   useEffect(() => {
     movie && getMovieListData()
@@ -35,9 +28,9 @@ const CardList = ({ movie }) => {
   if (isLoading) {
     return <h1>Loading....</h1>
   }
-  // if (state.isLoading) {
-  //   return <h1>Loading....</h1>
-  // }
+
+  const OfferSingleCard = withSingleCard(SingleCard)
+
   return (
     <div className='flex items-center justify-between flex-wrap p-10'>
       {movie

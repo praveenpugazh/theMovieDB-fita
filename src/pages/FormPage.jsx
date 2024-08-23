@@ -1,9 +1,8 @@
 import { useState, useRef } from 'react'
-import ClassComponent from '../components/ClassComponent'
+// import ClassComponent from '../components/ClassComponent'
 
 const FormPage = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
     lastName: '',
     age: '',
     email: ''
@@ -53,7 +52,7 @@ const FormPage = () => {
         <label htmlFor=''>Email</label>
         <input
           type='email'
-          name='firstName'
+          name='email'
           value={formData.email}
           onChange={(e) => {
             setFormData({ ...formData, email: e.target.value })
@@ -69,7 +68,7 @@ const FormPage = () => {
           Submit
         </button>
       </form>
-      <ClassComponent />
+      {/* <ClassComponent /> */}
     </div>
   )
 }

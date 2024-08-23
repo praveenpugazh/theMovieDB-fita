@@ -3,7 +3,7 @@ import tvSlice from '../slice/tvSlice'
 
 const store = configureStore({
   reducer: {
-    tv: tvSlice
+    tvSlice
   }
 })
 

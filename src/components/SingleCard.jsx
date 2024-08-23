@@ -15,6 +15,15 @@ const SingleCard = ({ data }) => {
 
 export default SingleCard
 
+export const withSingleCard = (SingleCard) => {
+  return (
+    <div>
+      <span>Offer</span>
+      <SingleCard />
+    </div>
+  )
+}
+
 SingleCard.propTypes = {
   data: PropTypes.object
 }
